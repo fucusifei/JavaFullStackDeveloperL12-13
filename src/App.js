@@ -1,7 +1,12 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import {makeStyles} from "@material-ui/core";
+import Expressions from "./Expressions/containers/expressions";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import expressionsReducer from './Expressions/reducers/expressions'
 
+const store = createStore(expressionsReducer)
 const useStyles = makeStyles((theme) => ({
 
 }));
@@ -99,6 +104,7 @@ class App extends React.Component {
 
 
     return (
+
         <div>
             <div>
                 {out}
@@ -122,14 +128,27 @@ class App extends React.Component {
             <Button variant="contained" onClick={() => this.pressMarkButton('*')}>*</Button>
           </div>
             <div>
-            <Button variant="contained" > </Button>
+
             <Button variant="contained" onClick={() => this.pressNumberButton('0')}>0</Button>
             <Button variant="contained" onClick={() => this.pressEqualButton()}>=</Button>
             <Button variant="contained" onClick={() => this.pressMarkButton('/')}>/</Button>
             </div>
-            <div>
-                {arr.map(name => <li key={name}> {name} </li>)}
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column'
+            }}>
+                {this.state.arr.map(expression => (
+                    <div>
+                        {expression}
+                    </div>
+
+                ))}
             </div>
+            <Provider store={store}>
+                <Expressions>
+
+                </Expressions>
+            </Provider>
         </div>
 
 
