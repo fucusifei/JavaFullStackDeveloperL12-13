@@ -22,7 +22,6 @@ class App extends React.Component {
       container: '',
       arr : []
     }
-    this.ref = React.createRef()
   }
 
   pressNumberButton(number) {
@@ -98,7 +97,6 @@ class App extends React.Component {
   render() {
     const {
         out,
-        arr
     } = this.state;
 
 
@@ -146,7 +144,7 @@ class App extends React.Component {
             </div>
             <Provider store={store}>
                 <Expressions>
-
+                    {store}
                 </Expressions>
             </Provider>
         </div>
