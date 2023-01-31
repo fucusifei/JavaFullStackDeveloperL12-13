@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import expressionsActions from "../actions/expressions"
 
 class Expressions extends React.Component{
+
     render() {
         console.log(this.props)
 
@@ -11,12 +12,8 @@ class Expressions extends React.Component{
             <div>
                 <Button variant="contained" onClick={() => expressionsActions.fetchExpressions({
                     expressionsCount: 5,
-                })(this.props.dispatch)}
-                >
+                })(this.props.dispatch)}>
                 </Button>
-                <div>
-
-                </div>
             </div>
         )
     }
